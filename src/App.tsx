@@ -7,22 +7,14 @@ import Footer from './components/Footer'
 function App() {
   return (
     <>
-      <header id='header'>
-        <Header />
-      </header>
+      
+      <Header />
 
-      <main id='operations' className='content-center'>
-        <Operations />
-      </main>
+      <Operations />
 
-      {/* This component shows operations history */}
-      <section id='saved' className='content-center'>
-        <Saved />
-      </section>
+      <Saved />
 
-      <footer id='footer'>
-        <Footer />
-      </footer>
+      <Footer />
     </>
   )
 }

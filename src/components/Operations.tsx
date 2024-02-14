@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { useEffect, useState } from 'react';
 import { useAppSelector } from "../hooks/store";
 import { useSavedActions } from '../hooks/useSavedActions';
@@ -97,39 +98,153 @@ function Operations() {
 
   return (
     <>
-      <div id="op-title">
-        <span className='t-white'>convert</span>
-      </div>
-      <form id="saveForm" onSubmit={handleSaveOperation}>
-        <div className='op-block'>
-        {/* SELECT */}
-          <select name="operationSelect" id="operationSelect" value={operationList[currentOperation].text} onChange={handleOperationChange}>
-            {operationList.map(operation => (
-              <SelectOperationOption key={operation.id} operation={operation} />
-            ))}
-          </select>
-          <button type="button" onClick={handleButtonClick}>
-            <img src={swapLogo} className="changeLogo" alt="unit-swap-logo" />
+      <SectionStyle>
+        <OpTitleStyle>
+          <span className='t-white'>convert</span>
+        </OpTitleStyle>
+        <form id="saveForm" onSubmit={handleSaveOperation}>
+          <OpBlockStyle>
+          {/* SELECT */}
+            <select name="operationSelect" id="operationSelect" value={operationList[currentOperation].text} onChange={handleOperationChange}>
+              {operationList.map(operation => (
+                <SelectOperationOption key={operation.id} operation={operation} />
+              ))}
+            </select>
+            <button type="button" onClick={handleButtonClick}>
+              <ChangeLogoStyle src={swapLogo} alt="unit-swap-logo" />
+            </button>
+            {/* INPUT */}
+            <input type="text" name="numberInput" id="numberInput" value={currentInput} onChange={handleInputChange}/>
+            <span className='t-white'> {operationList[currentOperation].from}</span>
+          </OpBlockStyle>
+        </form>
+        <ResBlockStyle>
+          {/* SAVE BUTTON */}
+          <button form="saveForm" type='submit'>
+            <SaveLogoStyle src={saveIcon} alt="unit-converter-logo" />
           </button>
-          {/* INPUT */}
-          <input type="text" name="numberInput" id="numberInput" value={currentInput} onChange={handleInputChange}/>
-          <span className='t-white'> {operationList[currentOperation].from}</span>
-        </div>
-      </form>
-      <div className='res-block'>
-        {/* SAVE BUTTON */}
-        <button form="saveForm" type='submit'>
-          <img src={saveIcon} className="saveLogo" alt="unit-converter-logo" />
-        </button>
-        {/* RESULTS */}
-        <div className='t-white'>
-          <span className='result-number'>{result.toFixed(2)}</span>
-          <span className='result-unit'>{operationList[currentOperation].to}</span>
-        </div>
-      </div>
-      <span className={`t-white error-msg ${error === false ? "" : "show"}`}>{error === false ? "" : errorMsg}</span>
+          {/* RESULTS */}
+          <div className='t-white'>
+            <ResultNumberStyle>{result.toFixed(2)}</ResultNumberStyle>
+            <ResultUnitStyle>{operationList[currentOperation].to}</ResultUnitStyle>
+          </div>
+        </ResBlockStyle>
+        <ErrorMsgStyle className={`t-white error-msg ${error === false ? "" : "show"}`} >{error === false ? "" : errorMsg}</ErrorMsgStyle>
+      </SectionStyle>
     </>
   )
 }
 
-export default Operations
+const SectionStyle= styled.main`
+  background-color: #2E0039;
+  border-radius: 21px;
+  padding: 1.5rem;
+  margin: 6rem 20% 3rem 20%;
+
+  select, input {
+    background-color: #2E0039;
+    color: white;
+    border: 0;
+    border-bottom: 2px solid white;
+    width: 90%;
+    cursor: pointer;
+  }
+
+  select {
+    width: 92%;
+  }
+
+  input {
+    text-align: right;
+    width: 90%;
+  }
+
+  select:focus, input:focus {
+    outline: none;
+  }
+
+  button {
+    all: unset;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    margin: 5rem 12% 3rem 12%
+  }
+
+  @media only screen and (max-width: 700px) {
+    margin: 4.5rem 5% 2.5rem 5%
+  }
+`;
+
+const OpTitleStyle= styled.div`
+  padding-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+`;
+
+const OpBlockStyle= styled.div`
+  padding-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 45% 10% 40% 5%;
+
+  form {
+    all: unset;
+  }
+
+  @media only screen and (max-width: 700px) {
+    display: grid;
+    row-gap: 1.5rem;
+    grid-template-columns: 90% 10%;
+  }
+`;
+
+const ChangeLogoStyle = styled.img`
+  width: 24px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const SaveLogoStyle = styled.img`
+  width: 24px;
+  transition: all ease 0.3s;
+
+  &:hover {
+    width: 26px;
+    cursor: pointer;
+  }
+`;
+
+const ResBlockStyle = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ResultNumberStyle = styled.span`
+  padding-right: 0.5rem;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+`;
+
+const ResultUnitStyle = styled.span`
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+`;
+
+const ErrorMsgStyle = styled.span`
+  font-size: 10px;
+  font-weight: lighter;
+  color: red;
+  opacity: 0;
+  transition: all 0.5s ease;
+
+  &.show {
+    opacity: 1;
+  }
+`;
+
+export default Operations;
