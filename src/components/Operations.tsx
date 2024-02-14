@@ -50,10 +50,12 @@ function Operations() {
     (e.target.id === "numberInput") ? setCurrentInput(e.target.value) : null;
   };
 
+  // Realiza la conversion de operaciones
   const switchOperationUnit = (operationUnit: string) => {
     return operationUnit.split("-").reverse().join("-");
   }
 
+  // Realiza el intercambio entre el input y el resultado
   const handleResultChange = () => {
     const currentSymbol = operationList[currentOperation].key;
     const switchOperation = switchOperationUnit(currentSymbol);
@@ -71,12 +73,14 @@ function Operations() {
     }
   };
 
+  // Controla el click del boton de intercambio entre input y resultado
   const handleButtonClick = () => {
     isChangeFromButton = true;
     handleResultChange();
     isChangeFromButton = false;
   };
 
+  // Realiza el guardado de la operacion y reseteo del formulario
   const handleSaveOperation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
