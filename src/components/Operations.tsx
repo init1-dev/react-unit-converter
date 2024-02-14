@@ -1,20 +1,23 @@
-// import React from 'react';
 import { useEffect, useState } from 'react';
-import saveIcon from '../assets/save.svg'
-import swapLogo from '../assets/change.svg'
 import { useAppSelector } from "../hooks/store";
 import { useSavedActions } from '../hooks/useSavedActions';
+
+import SelectOperationOption from './SelectOperationOption';
+
+import saveIcon from '../assets/save.svg'
+import swapLogo from '../assets/change.svg'
 
 function Operations() {
   const operationList = useAppSelector((state) => state.operations);
   const { addSaved } = useSavedActions();
-  let isChangeFromButton = false;
-
+  
   const [currentOperation, setCurrentOperation] = useState<number>(0);
   const [currentInput, setCurrentInput ] = useState<string>("0");
   const [result, setResult] = useState<number>(0);
   const [error, setError] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>("");
+
+  let isChangeFromButton = false;
 
   useEffect(() => {
     const regExp = /^(?=.{1,10}$)[0-9]+(?:\.[0-9]*)?$/;
@@ -102,7 +105,7 @@ function Operations() {
         {/* SELECT */}
           <select name="operationSelect" id="operationSelect" value={operationList[currentOperation].text} onChange={handleOperationChange}>
             {operationList.map(operation => (
-              <option key={operation.id} value={operation.text}>{operation.text}</option>
+              <SelectOperationOption key={operation.id} operation={operation} />
             ))}
           </select>
           <button type="button" onClick={handleButtonClick}>
@@ -124,7 +127,7 @@ function Operations() {
           <span className='result-unit'>{operationList[currentOperation].to}</span>
         </div>
       </div>
-      <span className='t-white error-msg'>{error === false ? "" : errorMsg}</span>
+      <span className={`t-white error-msg ${error === false ? "" : "show"}`}>{error === false ? "" : errorMsg}</span>
     </>
   )
 }

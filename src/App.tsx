@@ -28,8 +28,3 @@ function App() {
 }
 
 export default App
-
-// TODO:
-
-// - Styled components, pasar los estilos a cada componente
-// - Terminar de crear los componentes necesarios

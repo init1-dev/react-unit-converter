@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface Operations {
+export interface Operation {
     id: number,
     text: string,
     from: string,
@@ -8,11 +8,11 @@ export interface Operations {
     operation: number
 }
 
-export interface OperationsWithKey extends Operations {
+export interface OperationWithKey extends Operation {
     key: string
 }
 
-const initialState: OperationsWithKey[] = [
+const initialState: OperationWithKey[] = [
     {key: 'km-mi', id: 0, text: "km → miles", from: "km", to: "miles", operation: 0.62137},
     {key: 'mi-km', id: 1, text: "miles → km", from: "miles", to: "km", operation: 1.60934},
     {key: 'ft-m', id: 2, text: "feet → meters", from: "feet", to: "m", operation: 0.30479},
