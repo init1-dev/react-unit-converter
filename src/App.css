@@ -10,3 +10,7 @@ body {
 .t-white {
   color: white;
 }
+
+select option {
+  font-size: 120%;
+}
