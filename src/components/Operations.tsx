@@ -13,7 +13,7 @@ function Operations() {
   const { addSaved } = useSavedActions();
   
   const [currentOperation, setCurrentOperation] = useState<number>(0);
-  const [currentInput, setCurrentInput ] = useState<string>("0");
+  const [currentInput, setCurrentInput ] = useState<string>("");
   const [result, setResult] = useState<number>(0);
   const [error, setError] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>("");
