@@ -9,5 +9,4 @@ Unit conversion app using React + Redux
 
 ## TODO:
 
-  - Styled components
   - Refactor
