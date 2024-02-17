@@ -140,6 +140,7 @@ const SectionStyle= styled.main`
   border-radius: 21px;
   padding: 1.5rem;
   margin: 6rem 20% 3rem 20%;
+  box-shadow: rgb(0 0 0 / 40%) 0px 2px 2px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
 
   select, input {
     background-color: ${({ theme }) => theme.operationsBg};

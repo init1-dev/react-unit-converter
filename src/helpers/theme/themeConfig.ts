@@ -31,8 +31,8 @@ export interface Theme {
     html: dark,
     header: dark,
     headerH1: light,
-    savedCardBg: '#141921',
-    operationsBg: '#141921'
+    savedCardBg: '#171d27',
+    operationsBg: '#1d242f'
   };
   
   // Estilos globales
@@ -42,9 +42,5 @@ export interface Theme {
     }
     header {
       background-color: ${({ theme }) => theme.header};
-  
-      h1 {
-        ${({ theme }) => theme.headerH1};
-      }
     }
   `;

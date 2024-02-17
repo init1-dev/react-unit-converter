@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import logo from '../assets/logo.svg'
 
 interface HeaderProps {
   toggleTheme: () => void;
@@ -11,9 +10,10 @@ const Header = ({toggleTheme, theme}: HeaderProps) => {
     <HeaderStyle>
       <TopBarStyle>
           <div className="separador" style={{
-            display: "flex"
+            display: "flex",
+            alignItems: "center"
           }}>
-            <LogoStyle src={logo} alt="unit-converter-logo" />
+            <LogoStyle className="fa-solid fa-arrow-right-arrow-left" />
             <HeaderTextStyle>unit converter</HeaderTextStyle>
           </div>
           <ToggleThemeButton onClick={toggleTheme}>
@@ -28,7 +28,7 @@ const HeaderStyle =styled.header`
   position: fixed;
   width: 100%;
   top: 0;
-  box-shadow: 0 5px 5px -4px rgba(0,0,0,.5);
+  box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
   padding: 0.5rem 20%;
 
   @media only screen and (max-width: 1024px) {
@@ -54,8 +54,9 @@ const TopBarStyle = styled.div`
   }
 `;
 
-const LogoStyle = styled.img`
-  width: 32px;
+const LogoStyle = styled.i`
+  padding-right: 10px;
+  color: ${({ theme }) => theme.headerH1};
 `;
 
 const HeaderTextStyle = styled.h1`
@@ -64,15 +65,19 @@ const HeaderTextStyle = styled.h1`
   font-size: 20px;
   font-weight: 900;
   line-height: 30px;
+  color: ${({ theme }) => theme.headerH1};
 `;
 
 const ToggleThemeButton = styled.button`
-  background-color: transparent;
-  color: ${({ theme }) => theme.text};
-  border: none;
+  background-color: ${({ theme }) => theme.savedCardBg};
+  border: 1px;
+  // border-style: ridge;
+  border-color: ${({ theme }) => theme.savedCardBg};
+  // box-shadow: 4px 4px 5px -5px rgba(0,0,0,.5);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 40%) 1px 1px 2px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
 `;
 
 export default Header;

@@ -6,6 +6,8 @@ import Footer from './components/Footer'
 import { toggleTheme, loadTheme } from './helpers/theme/themeUtils'
 import { lightTheme, darkTheme, GlobalStyles } from './helpers/theme/themeConfig';
 
+import '@fortawesome/fontawesome-free/css/all.css';
+
 import { useState } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 

@@ -34,8 +34,19 @@ const SavedElementStyle = styled.div`
   background-color: ${({ theme }) => theme.savedCardBg};
   padding: 0.4rem 0.2rem 0.4rem 0.5rem;
   border-radius: 0.4rem;
+	box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
   font-size: 12px;
   font-weight: 400;
+  transition: all 0.2s;
+
+  &:hover {
+    filter: brightness(90%);
+    transform: translateY(-4px);
+  }
+  
+  &:active {
+    transform: translateY(0px);
+  }
 
   button {
     all: unset;
@@ -43,7 +54,7 @@ const SavedElementStyle = styled.div`
 `;
 
 const SavedTextStyle = styled.span`
-  color: #676767;
+  color: #808080;
 `;
 
 const CloseIconStyle = styled.img`
