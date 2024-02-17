@@ -19,7 +19,7 @@ function Operations() {
   const [errorMsg, setErrorMsg] = useState<string>("");
 
   useEffect(() => {
-    const regExp = /^(?=.{1,10}$)(?!0+(\.\d*|)$)[1-9]\d*(\.\d*)?$/;
+    const regExp = /^(?=.{1,10}$)(?!0(?:\.0*)?$)\d+(?:\.\d+)?$/;
     if (regExp.test(currentInput)) {
       setResult(parseFloat(currentInput) * operationList[currentOperation].operation);
       setError(false);
