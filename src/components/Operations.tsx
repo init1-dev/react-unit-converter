@@ -21,7 +21,7 @@ function Operations() {
   let isChangeFromButton = false;
 
   useEffect(() => {
-    const regExp = /^(?=.{1,10}$)[0-9]+(?:\.[0-9]*)?$/;
+    const regExp = /^(?=.{1,10}$)(?!0\.$)[0-9]+(?:\.[0-9]*)?$/;
     if (regExp.test(currentInput)) {
       setResult(parseFloat(currentInput) * operationList[currentOperation].operation);
       setError(false);
