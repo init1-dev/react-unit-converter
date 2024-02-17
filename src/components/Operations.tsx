@@ -18,10 +18,8 @@ function Operations() {
   const [error, setError] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>("");
 
-  let isChangeFromButton = false;
-
   useEffect(() => {
-    const regExp = /^(?=.{1,10}$)(?!0\.$)[0-9]+(?:\.[0-9]*)?$/;
+    const regExp = /^(?=.{1,10}$)(?!0+(\.\d*|)$)[1-9]\d*(\.\d*)?$/;
     if (regExp.test(currentInput)) {
       setResult(parseFloat(currentInput) * operationList[currentOperation].operation);
       setError(false);
@@ -69,19 +67,9 @@ function Operations() {
       setCurrentOperation(operationList[switchedOperationId].id);
     }    
     
-    if(!isChangeFromButton) {
-      const resultValue = parseFloat(currentInput);
-      setResult(resultValue);
-    } else {
+    if(result !== 0){
       setCurrentInput(result.toFixed(2));
     }
-  };
-
-  // Controla el click del boton de intercambio entre input y resultado
-  const handleButtonClick = () => {
-    isChangeFromButton = true;
-    handleResultChange();
-    isChangeFromButton = false;
   };
 
   // Realiza el guardado de la operacion y reseteo del formulario
@@ -110,7 +98,7 @@ function Operations() {
                 <SelectOperationOption key={operation.id} operation={operation} />
               ))}
             </select>
-            <button type="button" onClick={handleButtonClick}>
+            <button type="button" onClick={handleResultChange}>
               <ChangeLogoStyle src={swapLogo} alt="unit-swap-logo" />
             </button>
             {/* INPUT */}
