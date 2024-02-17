@@ -4,7 +4,7 @@ interface OperationElementProps {
     operation: OperationWithKey
 }
 
-const SelectOperationOption: React.FC<OperationElementProps> = ({ operation }) => {  
+const SelectOperationOption = ({ operation }: OperationElementProps) => {
   return (
     <>
         <option key={operation.id} value={operation.text}>{operation.text}</option>

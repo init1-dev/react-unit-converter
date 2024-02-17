@@ -7,6 +7,8 @@ export interface Theme {
     html: string;
     header: string;
     headerH1: string;
+    savedCardBg: string;
+    operationsBg: string;
   }
   
   // Define los temas
@@ -19,6 +21,8 @@ export interface Theme {
     html: light,
     header: light,
     headerH1: '#2E0039',
+    savedCardBg: '#E3E3E3',
+    operationsBg: '#2E0039',
   };
   
   export const darkTheme: Theme = {
@@ -27,6 +31,8 @@ export interface Theme {
     html: dark,
     header: dark,
     headerH1: light,
+    savedCardBg: '#141921',
+    operationsBg: '#141921'
   };
   
   // Estilos globales

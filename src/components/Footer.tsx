@@ -19,7 +19,7 @@ const FooterStyle = styled.footer`
   position: fixed;
   bottom: 0;
   padding: 0.5rem;
-  background-color: #2E0039;
+  background-color: ${({ theme }) => theme.operationsBg};
   width: 100%;
   color: white;
   font-size: 12px;

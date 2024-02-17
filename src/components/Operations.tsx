@@ -136,13 +136,13 @@ function Operations() {
 }
 
 const SectionStyle= styled.main`
-  background-color: #2E0039;
+  background-color: ${({ theme }) => theme.operationsBg};
   border-radius: 21px;
   padding: 1.5rem;
   margin: 6rem 20% 3rem 20%;
 
   select, input {
-    background-color: #2E0039;
+    background-color: ${({ theme }) => theme.operationsBg};
     color: white;
     border: 0;
     border-bottom: 2px solid white;
